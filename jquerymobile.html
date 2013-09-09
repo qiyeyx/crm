@@ -1,0 +1,104 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+	<style type="text/css">
+	    .z-page-data {}
+	    .z-header{}
+	    .z-footer-btn {}
+	    .z-hide {display:none;}
+	</style>
+</head>
+
+<body>
+	<div data-role="page">
+	
+	    <div id="dataHeader-0" class="z-header"  data-role="header" data-position="fixed">
+	        <a href="#" data-icon="gear">设置</a><h1>哦耶！</h1><a href="#" data-icon="back" >退出</a>
+	    </div>
+	    
+	    <div id="dataHeader-1" class="z-header z-hide"  data-role="header" data-position="fixed">
+	        <a href="#" data-icon="plus">新嘎嘎</a><h1>嘎嘎！</h1><a href="#" data-icon="back" >退出</a>
+	    </div>
+	    
+	    <div id="dataHeader-2" class="z-header z-hide" data-role="header" data-position="fixed">
+	        <a href="#" data-icon="plus">新啊啊</a><h1>啊啊！</h1><a href="#" data-icon="back" >退出</a>
+	    </div>
+	    
+	    <div id="dataHeader-3" class="z-header z-hide" data-role="header" data-position="fixed">
+	        <a href="#" data-icon="plus">新嗯嗯</a><h1>嗯嗯！</h1><a href="#" data-icon="back" >退出</a>
+	    </div>
+	    
+	    <div id="dataHeader-4" class="z-header z-hide" data-role="header" data-position="fixed">
+	        <a href="#" data-icon="plus">新哇哇</a><h1>哇哇！</h1><a href="#" data-icon="back" >退出</a>
+	    </div>
+
+	    <div id="dataContent" data-role="content">
+	    </div>
+
+	    <div id="dataFooter" data-role="footer" data-position="fixed">
+		    <div data-role="navbar">
+                <ul>
+                    <li><a id="btn-0">哦耶</a></li>
+                    <li><a id="btn-1">嘎嘎</a></li>
+                    <li><a id="btn-2">啊啊</a></li>
+                    <li><a id="btn-3">嗯嗯</a></li>
+                    <li><a id="btn-4">哇哇</a></li>
+                </ul>
+            </div>
+	    </div>
+	    
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<script type="text/javascript">
+	(function(window) {
+	    var Tester = window.Tester || {};
+	    
+	    Tester.init = function() {
+	        for (var i = 0; i < 5; i++) {
+	            var data_array = [];
+	            data_array.push('<div id="data-', i, '" class="z-page-data', (0 != i ? " z-hide" : ""), '">');
+	            data_array.push('<ul style="margin-bottom: 0px;" data-role="listview" data-filter="true" data-filter-placeholder="', 'Search SEQ ', i, '" data-inset="true">');
+	            var jMax = 3 + parseInt(10 * Math.random());
+	            for (var j = 0; j < jMax; j++) {
+	                data_array.push('<li><a href="#">SEQ-', i, '-', j, '</a></li>');
+	            }
+	            data_array.push('</ul>');
+	            data_array.push('<div style="overflow:hidden;">');
+	            data_array.push('<a style="float:left;margin-left:0px;" href="#" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true">上一页</a>');
+                data_array.push('<a style="float:right;margin-right:0px;" href="#" data-role="button" data-icon="arrow-r" data-iconpos="right" data-inline="true">下一页</a>');
+                data_array.push('</div>');
+	            data_array.push('</div>');
+	            jQuery("#dataContent").append(data_array.join(''));
+	        
+	            var btn = jQuery("#btn-" + i);
+	            /*btn.attr("href", "javascript:void(0);");*/
+	            btn.addClass('z-footer-btn');
+	            var ACTIVE_CLASS = 'ui-btn-active ui-state-persist';
+	            if (0 == i) {
+	                btn.addClass(ACTIVE_CLASS);
+	            }
+	            btn.click(function() {
+	                var me = jQuery(this);
+	                var seq = me.attr("id").substring(4);
+	                jQuery("#dataContent .z-page-data").addClass('z-hide');
+	                jQuery("#data-" + seq).removeClass('z-hide');
+	                
+	                jQuery(".z-header").addClass('z-hide');
+	                jQuery("#dataHeader-" + seq).removeClass('z-hide');
+	            });
+	        }
+	        
+	    };
+	    
+	    window.Tester = Tester;
+	    Tester.init();
+	})(window);
+	</script>
+</body>
+</html>
