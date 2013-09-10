@@ -18,23 +18,23 @@
 	<div id="mainPage" data-role="page">
 	
 	    <div id="dataHeader-0" class="z-header"  data-role="header" data-position="fixed">
-	        <a href="#" data-icon="plus">新哦耶</a><h1>哦耶！</h1><a href="#" data-icon="gear" >选项</a>
+	        <a href="#" data-icon="plus">新哦耶</a><h1>哦耶！</h1><a href="#template-setting" data-icon="gear" >选项</a>
 	    </div>
 	    
 	    <div id="dataHeader-1" class="z-header z-hide"  data-role="header" data-position="fixed">
-	        <a href="#" data-icon="plus">新嘎嘎</a><h1>嘎嘎！</h1><a href="#" data-icon="gear" >选项</a>
+	        <a href="#" data-icon="plus">新嘎嘎</a><h1>嘎嘎！</h1><a href="#template-setting" data-icon="gear" >选项</a>
 	    </div>
 	    
 	    <div id="dataHeader-2" class="z-header z-hide" data-role="header" data-position="fixed">
-	        <a href="#" data-icon="plus">新啊啊</a><h1>啊啊！</h1><a href="#" data-icon="gear" >选项</a>
+	        <a href="#" data-icon="plus">新啊啊</a><h1>啊啊！</h1><a href="#template-setting" data-icon="gear" >选项</a>
 	    </div>
 	    
 	    <div id="dataHeader-3" class="z-header z-hide" data-role="header" data-position="fixed">
-	        <a href="#" data-icon="plus">新嗯嗯</a><h1>嗯嗯！</h1><a href="#" data-icon="gear" >选项</a>
+	        <a href="#" data-icon="plus">新嗯嗯</a><h1>嗯嗯！</h1><a href="#template-setting" data-icon="gear" >选项</a>
 	    </div>
 	    
 	    <div id="dataHeader-4" class="z-header z-hide" data-role="header" data-position="fixed">
-	        <a href="#" data-icon="plus">新哇哇</a><h1>哇哇！</h1><a href="#" data-icon="gear" >选项</a>
+	        <a href="#" data-icon="plus">新哇哇</a><h1>哇哇！</h1><a href="#template-setting" data-icon="gear" >选项</a>
 	    </div>
 
 	    <div id="dataContent" data-role="content">
@@ -54,9 +54,16 @@
 	    
     </div>
     
-    <div id="view-item-template" data-role="page">
-      <div data-role="header"><a href="#mainPage" data-icon="back" data-transition="flip">返回</a><h1></h1><a href="#" data-icon="edit" >编辑</a></div>
+    <div id="template-view-item" data-role="page">
+      <div data-role="header"><a href="#mainPage" data-icon="back">返回</a><h1></h1><a href="#" data-icon="edit" >编辑</a></div>
       <div data-role="content"></div>
+    </div>
+    
+    <div id="template-setting" data-role="page">
+      <div data-role="header"><a href="#mainPage" data-icon="back">返回</a><h1>选项</h1><a href="#" data-icon="minus" >安全退出</a></div>
+      <div data-role="content">
+        <a href="#" data-role="button">嘎嘎</a>
+      </div>
     </div>
     
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -78,7 +85,7 @@
 		        // want to handle URLs that request the data for a specific
 		        // category.
 		        var u = $.mobile.path.parseUrl( data.toPage ),
-			        re = /^#view-item-template/;
+			        re = /^#template-view-item/;
 		        if ( u.hash.search(re) != -1 ) {
 			        // We're being asked to display the items for a specific category.
 			        // Call our internal method that builds the content for the category
@@ -101,7 +108,7 @@
 	            var jMax = 3 + parseInt(10 * Math.random());
 	            for (var j = 0; j < jMax; j++) {
 	                var value = new Date().getTime() + parseInt(Math.random() * 1000);
-	                data_array.push('<li><a href="#view-item-template?value=', value, '" data-transition="flip">SEQ-', value, '</a></li>');
+	                data_array.push('<li><a href="#template-view-item?value=', value, '" data-transition="flip">SEQ-', value, '</a></li>');
 	            }
 	            data_array.push('</ul>');
 	            data_array.push('<div style="overflow:hidden;">');
@@ -125,7 +132,7 @@
 					    jMax = 3 + parseInt(10 * Math.random());
 	                    for (var j = 0; j < jMax; j++) {
 	                        var value = new Date().getTime() + parseInt(Math.random() * 1000);
-	                        sub_array.push('<li><a href="#view-item-template?value=', value, '" data-transition="flip">SEQ-', value, '</a></li>');
+	                        sub_array.push('<li><a href="#template-view-item?value=', value, '" data-transition="flip">SEQ-', value, '</a></li>');
 	                    }
 	                    $ul.html(sub_array.join(''));
 	                    $ul.listview("refresh");
